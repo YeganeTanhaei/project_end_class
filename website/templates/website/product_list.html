@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tutorial list</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            {#background-color: #eae9e9;#}
+        }
+        table{
+            margin: auto;
+            margin-top: 40px;
+            border-collapse: collapse;
+        }
+        td{
+            padding: 10px;
+            border: 3px solid black;
+        }
+        td:hover{
+            background-color: #ddd;
+        }
+        tr:nth-child(even){
+            background-color: #eeeeee;
+        }
+        .nav{
+            height: 60px;
+            background-color: #9d9d9d;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            padding-top: 30px;
+            border-radius: 30px;
+        }
+        td a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    Tutorial List
+</div>
+<div>
+    <table>
+        {% for product in all_product %}
+            <tr>
+{#                <td><a href="{% url 'product-detail' slug=product.sulg %}">{{ product.title }}</a></td>#}
+                <td><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+<pre>      <b>total product</b>:{{ number_of_product }}</pre>
+<pre>      <b>average</b>:{{ average.price__avg}}</pre>
+<pre>      <b>max price</b>:{{ average.price__max}}</pre>
+<pre>      <b>min price</b>:{{ average.price__min}}</pre>
+<pre>      <b>max ratings</b>:{{ average.ratings__max}}</pre>
+</body>
+</html>
